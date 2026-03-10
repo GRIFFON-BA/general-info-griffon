@@ -17,115 +17,72 @@
         body {
             font-family: 'Open Sans', sans-serif;
             background-color: var(--bg-grey);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden; -webkit-font-smoothing: antialiased;
         }
 
         /* TEASER VIDEO OVERLAY (HORIZONTAAL) */
         #video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
             transition: opacity 0.8s ease;
         }
 
-        #video-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        #video-overlay.hidden { opacity: 0; pointer-events: none; }
 
-        #teaser-video {
-            width: 100%; /* Voor horizontale video */
-            height: auto;
-            max-width: 100vw;
-        }
+        #teaser-video { width: 100%; height: auto; max-width: 100vw; }
 
+        /* HEADER MET INLINE SVG LOGO */
         header {
-            width: 100%;
-            background-color: var(--white);
-            padding: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 100%; background-color: var(--white);
+            padding: 20px 0; display: flex; justify-content: center; align-items: center;
             border-bottom: 4px solid var(--griffon-blue);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            position: sticky; top: 0; z-index: 1000;
         }
 
-        .logo-img {
-            height: 60px;
+        .griffon-logo-svg {
+            height: 65px; /* Groter logo op mobiel */
             width: auto;
-            display: block;
+            fill: var(--griffon-blue);
         }
 
         .container {
-            width: 90%;
-            max-width: 420px;
-            margin-top: 25px;
-            padding-bottom: 60px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            width: 90%; max-width: 420px;
+            margin-top: 25px; padding-bottom: 60px;
+            opacity: 0; transition: opacity 0.5s ease;
         }
 
         .container.visible { opacity: 1; }
 
         .intro-text {
-            text-align: center;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            color: #444;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            text-align: center; font-size: 0.9rem;
+            margin-bottom: 25px; color: #444; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
         }
 
         .link-card {
-            background: var(--white);
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: var(--griffon-blue);
-            padding: 16px 20px;
-            margin-bottom: 12px;
-            border-radius: 4px;
-            font-weight: 700;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-left: 6px solid var(--griffon-blue);
-            transition: 0.2s;
+            background: var(--white); display: flex; align-items: center;
+            text-decoration: none; color: var(--griffon-blue);
+            padding: 16px 20px; margin-bottom: 12px; border-radius: 4px;
+            font-weight: 700; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--griffon-blue); transition: 0.2s;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* "Open on Desktop" knop krijgt een eigen stijl */
+        /* SEND TO DESKTOP STYLING */
         .desktop-card {
-            background-color: var(--griffon-blue);
-            color: white;
-            border-left: 6px solid #003d7a;
-            margin-top: 10px;
+            background-color: var(--griffon-blue); color: white;
+            border-left: 6px solid #003d7a; margin-top: 10px;
         }
 
-        .contact-card {
-            border-left-color: var(--griffon-red);
-            color: var(--griffon-red);
-        }
+        .contact-card { border-left-color: var(--griffon-red); color: var(--griffon-red); }
 
         #contact-form-container {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 6px;
-            display: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: var(--white); padding: 25px; border-radius: 6px;
+            display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         h2 { color: var(--griffon-blue); font-size: 1.3rem; border-bottom: 2px solid #eee; padding-bottom: 10px;}
@@ -133,13 +90,13 @@
         input, select, textarea {
             width: 100%; padding: 15px; margin-bottom: 12px;
             border: 1px solid #ddd; border-radius: 4px; font-size: 16px;
-            box-sizing: border-box;
+            box-sizing: border-box; font-family: inherit;
         }
 
         .submit-btn {
             background-color: var(--griffon-red); color: white; border: none;
-            width: 100%; padding: 18px; font-weight: 700; text-transform: uppercase;
-            border-radius: 4px; cursor: pointer;
+            width: 100%; padding: 18px; font-weight: 700;
+            text-transform: uppercase; border-radius: 4px; cursor: pointer;
         }
 
         footer { text-align: center; font-size: 0.75rem; color: #999; margin-top: 40px; }
@@ -154,7 +111,15 @@
 </div>
 
 <header>
-    <img src="logo-griffon.svg" alt="Griffon Logo" class="logo-img">
+    <svg class="griffon-logo-svg" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M72.5,95.7c-12.8,0-23.7-4.6-32.1-13.4C32,73.5,27.8,62.2,27.8,48.5c0-13.6,4.3-25,12.8-33.8C49,5.8,60.1,1.3,73,1.3c11.7,0,21.8,4.1,29.8,12c2,2,3.8,4.3,5.3,6.8l-15.6,8.5c-3.6-5.8-9.1-8.9-18-8.9c-8,0-14.7,2.8-19.8,8.4c-5.4,5.9-8.1,13-8.1,20.9c0,8,2.7,14.9,8.1,20.7c5,5.4,11.5,8.2,19.3,8.2c9.2,0,15.7-3.9,19-11.4l15.8,7.3C102.3,86.5,89.5,95.7,72.5,95.7z"/>
+        <path d="M132.8,93.5h-18.4V1.8h18.4V93.5z"/>
+        <path d="M198.5,93.5h-18.4V56.3h-31.5v37.2H130V1.8h18.4V40.2h31.5V1.8h18.4V93.5z"/>
+        <path d="M255.4,17.4V1.8H210v91.7h18.4V54.8h21.4V40.1h-21.4V17.4H255.4z"/>
+        <path d="M308.2,17.4V1.8h-45.4v91.7h18.4V54.8h21.4V40.1h-21.4V17.4H308.2z"/>
+        <path d="M374.8,47.8c0,14.2-4.1,25.8-12.3,34.4c-8.1,8.6-18.9,12.9-32.3,12.9c-13.4,0-24.2-4.3-32.3-12.9c-8.2-8.6-12.3-20.2-12.3-34.4c0-14.1,4.1-25.7,12.3-34.4c8.1-8.6,18.9-13,32.3-13c13.4,0,24.2,4.4,32.3,13C370.7,22.1,374.8,33.7,374.8,47.8z M356.2,47.8c0-10.1-2.4-18.1-7.2-24c-4.3-5.2-10-7.8-17-7.8c-7.1,0-12.7,2.6-17,7.8c-4.8,5.9-7.2,13.9-7.2,24c0,10.1,2.4,18.1,7.2,24c4.3,5.2,10,7.8,17,7.8c7.1,0,12.8-2.6,17-7.8C353.8,65.9,356.2,57.9,356.2,47.8z"/>
+        <path d="M447,93.5V1.8h-18.1l-36.4,51.8V1.8H374v91.7h18.1l36.5-51.8v51.8H447z"/>
+    </svg>
 </header>
 
 <div class="container" id="main-container">
@@ -167,8 +132,8 @@
         <a href="https://www.youtube.com/@GriffonGlobal" class="link-card">Griffon Global - YouTube</a>
         <a href="https://www.facebook.com/GriffonBA" class="link-card">Griffon | Facebook</a>
         
-        <a href="mailto:?subject=Griffon Professional Documentation&body=Hier is de link naar de Griffon documentatie om op uw desktop te bekijken: https://www.griffon.eu/en-en/leaflets-catalogs" class="link-card desktop-card" id="btn-desktop">
-            📧 Mail to Desktop
+        <a href="mailto:?subject=Griffon Professional Documentation&body=Bekijk de documentatie op uw desktop: https://www.griffon.eu/en-en/leaflets-catalogs" class="link-card desktop-card" id="btn-desktop">
+            📧 Mail naar Desktop
         </a>
 
         <a href="https://www.boltonadhesives.com" class="link-card">Bolton Adhesives</a>
@@ -209,28 +174,8 @@
     overlay.onclick = showMenu;
 
     const translations = {
-        nl: { 
-            intro: "The Choice of the Pro", 
-            home: "Website Homepage", 
-            folder: "Folders & Catalogi", 
-            desktop: "📧 Mail naar Desktop",
-            contact: "Neem contact met mij op", 
-            formH: "Contactverzoek",
-            optSelect: "Maak een keuze...", 
-            btnSend: "Verstuur aanvraag",
-            pName: "Naam", pEmail: "E-mail", pPhone: "Telefoon"
-        },
-        en: { 
-            intro: "The Choice of the Pro", 
-            home: "Website Homepage", 
-            folder: "Leaflets & Catalogs", 
-            desktop: "📧 Mail to Desktop",
-            contact: "Contact me", 
-            formH: "Contact Request",
-            optSelect: "Please select...", 
-            btnSend: "Send request",
-            pName: "Name", pEmail: "Email", pPhone: "Phone"
-        }
+        nl: { intro: "The Choice of the Pro", home: "Website Homepage", folder: "Folders & Catalogi", desktop: "📧 Mail naar Desktop", contact: "Neem contact met mij op", formH: "Contactverzoek", optSelect: "Maak een keuze...", btnSend: "Verstuur aanvraag", pName: "Naam", pEmail: "E-mail", pPhone: "Telefoon" },
+        en: { intro: "The Choice of the Pro", home: "Website Homepage", folder: "Leaflets & Catalogs", desktop: "📧 Mail to Desktop", contact: "Contact me", formH: "Contact Request", optSelect: "Please select...", btnSend: "Send request", pName: "Name", pEmail: "Email", pPhone: "Phone" }
     };
 
     const userLang = navigator.language.substring(0, 2);
