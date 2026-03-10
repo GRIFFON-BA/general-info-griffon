@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Griffon - The Choice of the Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --griffon-blue: #0054a6;
+            --griffon-red: #e30613;
+            --bg-grey: #f4f4f4;
+            --white: #ffffff;
+            --text-main: #333;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-grey);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* TEASER VIDEO OVERLAY (HORIZONTAAL) */
+        #video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease;
+        }
+
+        #video-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #teaser-video {
+            width: 100%; /* Voor horizontale video */
+            height: auto;
+            max-width: 100vw;
+        }
+
+        header {
+            width: 100%;
+            background-color: var(--white);
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 4px solid var(--griffon-blue);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 420px;
+            margin-top: 25px;
+            padding-bottom: 60px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .container.visible { opacity: 1; }
+
+        .intro-text {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            color: #444;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .link-card {
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--griffon-blue);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--griffon-blue);
+            transition: 0.2s;
+        }
+
+        /* "Open on Desktop" knop krijgt een eigen stijl */
+        .desktop-card {
+            background-color: var(--griffon-blue);
+            color: white;
+            border-left: 6px solid #003d7a;
+            margin-top: 10px;
+        }
+
+        .contact-card {
+            border-left-color: var(--griffon-red);
+            color: var(--griffon-red);
+        }
+
+        #contact-form-container {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 6px;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 { color: var(--griffon-blue); font-size: 1.3rem; border-bottom: 2px solid #eee; padding-bottom: 10px;}
+
+        input, select, textarea {
+            width: 100%; padding: 15px; margin-bottom: 12px;
+            border: 1px solid #ddd; border-radius: 4px; font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            background-color: var(--griffon-red); color: white; border: none;
+            width: 100%; padding: 18px; font-weight: 700; text-transform: uppercase;
+            border-radius: 4px; cursor: pointer;
+        }
+
+        footer { text-align: center; font-size: 0.75rem; color: #999; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<div id="video-overlay">
+    <video id="teaser-video" autoplay muted playsinline>
+        <source src="teaser.mp4" type="video/mp4">
+    </video>
+</div>
+
+<header>
+    <img src="logo-griffon.svg" alt="Griffon Logo" class="logo-img">
+</header>
+
+<div class="container" id="main-container">
+    <div id="intro" class="intro-text">The Choice of the Pro</div>
+
+    <div id="links-menu">
+        <a href="https://www.griffon.eu" class="link-card" id="btn-home">Website Homepage</a>
+        <a href="https://www.griffon.eu/en-en/leaflets-catalogs" class="link-card" id="btn-folder">Leaflets & Catalogs</a>
+        
+        <a href="https://www.youtube.com/@GriffonGlobal" class="link-card">Griffon Global - YouTube</a>
+        <a href="https://www.facebook.com/GriffonBA" class="link-card">Griffon | Facebook</a>
+        
+        <a href="mailto:?subject=Griffon Professional Documentation&body=Hier is de link naar de Griffon documentatie om op uw desktop te bekijken: https://www.griffon.eu/en-en/leaflets-catalogs" class="link-card desktop-card" id="btn-desktop">
+            📧 Mail to Desktop
+        </a>
+
+        <a href="https://www.boltonadhesives.com" class="link-card">Bolton Adhesives</a>
+        <a href="#" class="link-card contact-card" id="btn-contact" onclick="showForm()">Contact Me</a>
+    </div>
+
+    <div id="contact-form-container">
+        <h2 id="form-header">Contact Request</h2>
+        <form action="https://formsubmit.co/info@boltonadhesives.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="name" id="field-name" placeholder="Name" required>
+            <input type="email" name="email" id="field-email" placeholder="Email" required>
+            <input type="tel" name="phone" id="field-phone" placeholder="Phone" required>
+            <select name="request_type" required>
+                <option value="" disabled selected id="opt-select">Please select...</option>
+                <option value="Information" id="opt-info">Receive information</option>
+                <option value="Call-back" id="opt-call">Request a call-back</option>
+            </select>
+            <textarea name="message" rows="3" placeholder="Message..."></textarea>
+            <button type="submit" class="submit-btn" id="btn-submit">Send Request</button>
+        </form>
+    </div>
+
+    <footer>© <script>document.write(new Date().getFullYear())</script> Bolton Adhesives</footer>
+</div>
+
+<script>
+    const video = document.getElementById('teaser-video');
+    const overlay = document.getElementById('video-overlay');
+    const container = document.getElementById('main-container');
+
+    function showMenu() {
+        overlay.classList.add('hidden');
+        container.classList.add('visible');
+    }
+
+    video.onended = showMenu;
+    overlay.onclick = showMenu;
+
+    const translations = {
+        nl: { 
+            intro: "The Choice of the Pro", 
+            home: "Website Homepage", 
+            folder: "Folders & Catalogi", 
+            desktop: "📧 Mail naar Desktop",
+            contact: "Neem contact met mij op", 
+            formH: "Contactverzoek",
+            optSelect: "Maak een keuze...", 
+            btnSend: "Verstuur aanvraag",
+            pName: "Naam", pEmail: "E-mail", pPhone: "Telefoon"
+        },
+        en: { 
+            intro: "The Choice of the Pro", 
+            home: "Website Homepage", 
+            folder: "Leaflets & Catalogs", 
+            desktop: "📧 Mail to Desktop",
+            contact: "Contact me", 
+            formH: "Contact Request",
+            optSelect: "Please select...", 
+            btnSend: "Send request",
+            pName: "Name", pEmail: "Email", pPhone: "Phone"
+        }
+    };
+
+    const userLang = navigator.language.substring(0, 2);
+    const content = translations[userLang] || translations.en;
+
+    document.getElementById('intro').innerText = content.intro;
+    document.getElementById('btn-home').innerText = content.home;
+    document.getElementById('btn-folder').innerText = content.folder;
+    document.getElementById('btn-desktop').innerText = content.desktop;
+    document.getElementById('btn-contact').innerText = content.contact;
+    document.getElementById('form-header').innerText = content.formH;
+    document.getElementById('opt-select').innerText = content.optSelect;
+    document.getElementById('btn-submit').innerText = content.btnSend;
+    document.getElementById('field-name').placeholder = content.pName;
+    document.getElementById('field-email').placeholder = content.pEmail;
+    document.getElementById('field-phone').placeholder = content.pPhone;
+
+    function showForm() {
+        document.getElementById('links-menu').style.display = 'none';
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('contact-form-container').style.display = 'block';
+    }
+</script>
+</body>
+</html>
